@@ -2,9 +2,9 @@ type Route =
   | string
   | {
       route: string;
-      priority: number;
-      lastmod: `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
-      changefreq:
+      priority?: number;
+      lastmod?: `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
+      changefreq?:
         | "always"
         | "hourly"
         | "daily"
