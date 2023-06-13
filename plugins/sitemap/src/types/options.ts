@@ -1,7 +1,25 @@
+type Route =
+  | string
+  | {
+      route: string;
+      priority: number;
+      lastmod: `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
+      changefreq:
+        | "always"
+        | "hourly"
+        | "daily"
+        | "weekly"
+        | "monthly"
+        | "yearly"
+        | "never";
+    };
+
 type Options = {
-  buildDir: string;
+  outputDir: string;
   website: string;
-  routes: string[];
+  routes: Route[];
+  fileName?: string;
+  disableMinify?: boolean;
 };
 
 export default Options;
