@@ -1,10 +1,10 @@
-# Prerender
+# Plugin-Prerender
 
 Prerender a SPA application during build
 
 ## Summary
 
-- [Prerender](#prerender)
+- [Plugin-Prerender](#plugin-prerender)
   - [Summary](#summary)
   - [Installation](#installation)
   - [Import](#import)
