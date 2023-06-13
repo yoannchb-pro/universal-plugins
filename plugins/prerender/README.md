@@ -54,8 +54,8 @@ await prerender({
     // Optional - The path your rendered app should be output to
     outputDir: path.join(__dirname, 'prerendered'),
 
-    // Optional - The location of the index.html file
-    indexPath: path.join(__dirname, 'dist', 'index.html'),
+    // Optional - The path of the index.html file
+    indexDir: path.join(__dirname, 'dist'),
 
     // Optional - Options for the HTML minifier (https://github.com/kangax/html-minifier#options-quick-reference)
     minify: {
