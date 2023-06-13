@@ -17,7 +17,7 @@ function getPlugins(): Plugin[] {
 
   for (const plugin of directories) {
     const description = JSON.parse(
-      fs.readFileSync(path.join(plugin, "./package.json"), "utf8")
+      fs.readFileSync(path.join(actualPath, plugin, "./package.json"), "utf8")
     ).description;
     plugins.push({ name: plugin, description });
   }
