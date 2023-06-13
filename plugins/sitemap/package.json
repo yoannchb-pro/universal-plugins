@@ -1,7 +1,7 @@
 {
   "name": "@yoannchb/plugin-sitemap",
   "version": "1.0.0",
-  "description": "Generate a sitemap for your website on build",
+  "description": "Universal plugin to generate a sitemap for your website",
   "main": "./dist/index.js",
   "files": [
     "dist",

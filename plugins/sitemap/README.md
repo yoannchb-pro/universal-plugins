@@ -1,6 +1,6 @@
 # Plugin-Sitemap
 
-Generate a sitemap for your website on build
+Universal plugin to generate a sitemap for your website
 
 ## Summary
 

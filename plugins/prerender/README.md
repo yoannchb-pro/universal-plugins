@@ -1,6 +1,6 @@
 # Plugin-Prerender
 
-Prerender a SPA application during build
+Universal plugin to prerender SPA website
 
 ## Summary
 

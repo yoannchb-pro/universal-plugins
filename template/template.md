@@ -1,6 +1,6 @@
 # website-plugins
 
-A list of plugins for node, vitejs, webpack, rollup...
+A list of universal plugins for node, vitejs, webpack, rollup...
 
 ## Plugins
 

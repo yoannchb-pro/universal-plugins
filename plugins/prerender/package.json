@@ -1,7 +1,7 @@
 {
   "name": "@yoannchb/plugin-prerender",
   "version": "1.0.0",
-  "description": "Prerender a SPA application during build",
+  "description": "Universal plugin to prerender SPA website",
   "main": "./dist/index.js",
   "files": [
     "dist",
