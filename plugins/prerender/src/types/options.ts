@@ -1,8 +1,8 @@
 import type { Options as HtmlMinifierOptions } from "html-minifier";
 
 type RendererOptions = {
-  windowInject: { [key: string]: any };
-  renderAfterDocumentEvent: string;
+  windowInject?: { [key: string]: any };
+  renderAfterDocumentEvent?: string;
   renderAfterElementExist?: string;
   renderAfterTime?: number;
   headless?: boolean;
