@@ -82,7 +82,7 @@ await prerender({
         // Optional - Wait before rendering that a certain amount of time has passed
         renderAfterTime: 10000, // Wait 10 seconds.
 
-        // Optional - Display the browser window or not when rendering. Useful for debugging
+        // Optional - Display the browser window or not when rendering (Useful for debugging)
         headless: false
     }
 }),
