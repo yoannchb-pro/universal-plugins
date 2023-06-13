@@ -7,4 +7,13 @@ function log(message: string, isError?: boolean) {
   console.log(head, message);
 }
 
-export { log };
+/**
+ * Make a pause for some ms
+ * @param timeMs
+ * @returns
+ */
+function wait(timeMs: number) {
+  return new Promise((resolve) => setTimeout(resolve, timeMs));
+}
+
+export { log, wait };

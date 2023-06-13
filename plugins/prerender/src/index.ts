@@ -25,6 +25,7 @@ const prerender = async (options: Options): Promise<void> => {
         log(result.reason, true);
         continue;
       }
+
       savePage(options, result.value.route, result.value.html);
       log(`${result.value.route} rendered with sucess`);
     }

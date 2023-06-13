@@ -3,7 +3,11 @@ import path from "path";
 import fs from "fs";
 
 function savePage(options: Options, route: string, html: string) {
-  const target = path.join(options.buildDir, route, "index.html");
+  const target = path.join(
+    options.outputDir ?? options.buildDir,
+    route,
+    "index.html"
+  );
   const directory = path.dirname(target);
 
   if (!fs.existsSync(directory)) {

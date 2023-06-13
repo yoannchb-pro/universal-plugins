@@ -2,6 +2,20 @@
 
 Prerender a SPA application during build
 
+## Summary
+
+- [Prerender](#prerender)
+  - [Summary](#summary)
+  - [Installation](#installation)
+  - [Import](#import)
+  - [Usage](#usage)
+    - [Basic usage](#basic-usage)
+    - [Advanced usage](#advanced-usage)
+  - [Plugin integration](#plugin-integration)
+    - [Vite](#vite)
+    - [Webpack](#webpack)
+    - [Rollup](#rollup)
+
 ## Installation
 
 ```
@@ -16,7 +30,7 @@ import prerender from "@yoannchb/plugin-prerender";
 
 ## Usage
 
-Basic usage
+### Basic usage
 
 ```ts
 await prerender({
@@ -27,7 +41,57 @@ await prerender({
 }),
 ```
 
-## Vite
+### Advanced usage
+
+```ts
+await prerender({
+    // Required - The path to of the builded app to prerender
+    buildDir: path.resolve(__dirname, "./dist"),
+
+    // Required - Routes to render
+    routes: ["/", "/about", "/team", "/team/members"],
+
+    // Optional - The path your rendered app should be output to
+    outputDir: path.join(__dirname, 'prerendered'),
+
+    // Optional - The location of the index.html file
+    indexPath: path.join(__dirname, 'dist', 'index.html'),
+
+    // Optional - Options for the HTML minifier (https://github.com/kangax/html-minifier#options-quick-reference)
+    minify: {
+        collapseBooleanAttributes: true,
+        collapseWhitespace: true,
+        decodeEntities: true,
+        keepClosingSlash: true,
+        sortAttributes: true
+    },
+
+    renderer: {
+        // Optional - Any value you want ot inject in window (example: window.foo)
+        windowInject: {
+          foo: 'bar'
+        },
+
+        // Optional -Wait before rendering that the specified event is dispatched on the document
+        // example `document.dispatchEvent(new Event('some-event'))`
+        renderAfterDocumentEvent: 'some-event',
+
+        // Optional - Wait before rendering that the specified element is detected
+        renderAfterElementExists: '#root',
+
+        // NOT RECOMMENDED
+        // Optional - Wait before rendering that a certain amount of time has passed
+        renderAfterTime: 10000, // Wait 10 seconds.
+
+        // Optional - Display the browser window or not when rendering. Useful for debugging
+        headless: false
+    }
+}),
+```
+
+## Plugin integration
+
+### Vite
 
 ```ts
 import prerenderVitePlugin from "@yoannchb/plugin-prerender/vite";
@@ -41,7 +105,7 @@ export default {
 };
 ```
 
-## Webpack
+### Webpack
 
 ```ts
 import PrerenderWebpackPlugin from "@yoannchb/plugin-prerender/webpack";
@@ -55,7 +119,7 @@ export default {
 };
 ```
 
-## Rollup
+### Rollup
 
 ```ts
 import prerenderRollupPlugin from "@yoannchb/plugin-prerender/rollup";

@@ -8,7 +8,9 @@ function createServer(options: Options, port: number) {
 
     app.use(express.static(options.buildDir, { dotfiles: "allow" }));
     app.get("*", (_, res) =>
-      res.sendFile(path.join(options.buildDir, "index.html"))
+      res.sendFile(
+        path.join(options.indexDir ?? options.buildDir, "index.html")
+      )
     );
 
     const server = app.listen(port, serverCreated);
