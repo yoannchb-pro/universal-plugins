@@ -1,4 +1,4 @@
-# website-plugins
+# universal-plugins
 
 A list of universal plugins for node, vitejs, webpack, rollup...
 
