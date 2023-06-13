@@ -1,6 +1,6 @@
 # Plugin-Sitemap
 
-Prerender a SPA application during build
+Generate a sitemap for your website on build
 
 ## Summary
 
