@@ -1,8 +1,8 @@
 # website-plugins
 
-A list of plugins for node, vitejs, webpack, rollup...
+A list of universal plugins for node, vitejs, webpack, rollup...
 
 ## Plugins
 
-- [prerender](./plugins/prerender/README.md): Prerender a SPA application during build
-- [sitemap](./plugins/sitemap/README.md): Generate a sitemap for your website on build
+- [prerender](./plugins/prerender/README.md): Universal plugin to prerender SPA website
+- [sitemap](./plugins/sitemap/README.md): Universal plugin to generate a sitemap for your website
