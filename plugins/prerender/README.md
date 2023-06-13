@@ -19,7 +19,7 @@ import prerender from "@yoannchb/plugin-prerender";
 Basic usage
 
 ```ts
-prerender({
+await prerender({
     // Required - The path to of the builded app to prerender
     buildDir: path.resolve(__dirname, "./dist"),
     // Required - Routes to render
