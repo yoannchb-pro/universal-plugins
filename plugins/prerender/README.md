@@ -73,7 +73,6 @@ await prerender({
         },
 
         // Optional -Wait before rendering that the specified event is dispatched on the document
-        // example `document.dispatchEvent(new Event('some-event'))`
         renderAfterDocumentEvent: 'some-event',
 
         // Optional - Wait before rendering that the specified element is detected
