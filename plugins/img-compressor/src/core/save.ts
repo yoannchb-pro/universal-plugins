@@ -2,12 +2,6 @@ import Options from "../types/options";
 import path from "path";
 import fs from "fs";
 
-/**
- * Save the html page
- * @param options
- * @param route
- * @param html
- */
 function savePage(options: Options, route: string, html: string) {
   const target = path.join(
     options.outputDir ?? options.buildDir,

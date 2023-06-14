@@ -3,6 +3,10 @@ import { log } from "./utils";
 import createPage from "./core/page";
 import saveSiteMap from "./core/save";
 
+/**
+ * Sitemap generator main function
+ * @param options
+ */
 const sitemap = (options: Options) => {
   const website = options.website;
 

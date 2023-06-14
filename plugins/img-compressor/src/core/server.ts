@@ -2,12 +2,6 @@ import express from "express";
 import Options from "../types/options";
 import path from "path";
 
-/**
- * Create an express server to serve the website
- * @param options
- * @param port
- * @returns
- */
 function createServer(options: Options, port: number) {
   return new Promise<{ close: () => void }>((resolve) => {
     const app = express();

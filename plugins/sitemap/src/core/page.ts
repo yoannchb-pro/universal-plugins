@@ -1,6 +1,10 @@
 import { log } from "../utils";
 import Options from "../types/options";
 
+/**
+ * Generate the lastmod property with the actual date
+ * @returns
+ */
 function generateLastMod() {
   const date = new Date();
   const year = date.getFullYear();
@@ -9,10 +13,22 @@ function generateLastMod() {
   return `${year}-${month}-${day}`;
 }
 
+/**
+ * Generate the priority based if on it's the home page
+ * @param options
+ * @param route
+ * @returns
+ */
 function generatePriority(options: Options, route: string) {
   return options.routes.indexOf(route) === 0 ? "1.0" : "0.8";
 }
 
+/**
+ * Create a XML for the specified route
+ * @param options
+ * @param route
+ * @returns
+ */
 function createPage(options: Options, route: Options["routes"][number]) {
   const isRouteObject = typeof route === "object";
   const routePath = isRouteObject ? route.route : route;

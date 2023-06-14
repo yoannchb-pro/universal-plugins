@@ -3,12 +3,6 @@ import Options from "../types/options";
 import { minify } from "html-minifier";
 import { wait } from "../utils";
 
-/**
- * Create a renderer to get the html content of a page
- * @param options
- * @param port
- * @returns
- */
 async function createRenderer(options: Options, port: number) {
   const browser = await puppeteer.launch({
     headless: options.renderer?.headless ?? "new",

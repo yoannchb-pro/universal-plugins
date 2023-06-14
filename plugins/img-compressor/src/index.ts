@@ -5,10 +5,6 @@ import createRenderer from "./core/renderer";
 import savePage from "./core/save";
 import { log } from "./utils";
 
-/**
- * Prerender main function
- * @param options
- */
 const prerender = async (options: Options): Promise<void> => {
   log("Starting prerendering");
   const port = await getPort();

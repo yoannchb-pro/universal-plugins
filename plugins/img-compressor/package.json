@@ -1,0 +1,45 @@
+{
+  "name": "@yoannchb/plugin-img-compressor",
+  "version": "1.0.0",
+  "description": "Universal plugin to compress image for your website",
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoannchb-pro/website-plugins.git"
+  },
+  "keywords": [
+    "plugin",
+    "vite",
+    "rollup",
+    "vue",
+    "react",
+    "angular",
+    "typescript",
+    "javascript",
+    "prerender",
+    "prerender-spa"
+  ],
+  "author": "yoannchb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoannchb-pro/website-plugins/issues"
+  },
+  "homepage": "https://github.com/yoannchb-pro/website-plugins#readme",
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9",
+    "webpack": "^5.86.0"
+  }
+}
