@@ -33,7 +33,11 @@ function compress(options: Options, dir: string) {
           ),
         ])
       )
-      .pipe(gulp.dest(path.join(options.outputDir ?? options.baseDir, dir)))
+      .pipe(
+        gulp.dest(path.join(options.outputDir ?? options.baseDir, dir), {
+          overwrite: true,
+        })
+      )
       .on("end", () => resolve(dir));
   });
 }
