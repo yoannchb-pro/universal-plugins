@@ -34,13 +34,15 @@ import imgCompressor from "@yoannchb/plugin-img-compressor";
 
 ```ts
 import path from "path";
-buildDir: path.resolve(__dirname, "./dist"),
+await imgCompressor({
+  buildDir: path.resolve(__dirname, "./dist"),
+});
 ```
 
 ### Advanced usage
 
 ```ts
-
+await imgCompressor({});
 ```
 
 ## Plugin integration
