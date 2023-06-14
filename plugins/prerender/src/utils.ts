@@ -4,7 +4,7 @@
  */
 function log(message: string, isError?: boolean) {
   const head = isError ? "[PRERENDER PLUGIN ERROR]" : "[PRERENDER PLUGIN]";
-  console.log(head, message);
+  console[isError ? "error" : "log"](head, message);
 }
 
 /**

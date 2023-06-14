@@ -4,7 +4,7 @@
  */
 function log(message: string, isError?: boolean) {
   const head = isError ? "[SITEMAP PLUGIN ERROR]" : "[SITEMAP PLUGIN]";
-  console.log(head, message);
+  console[isError ? "error" : "log"](head, message);
 }
 
 export { log };
