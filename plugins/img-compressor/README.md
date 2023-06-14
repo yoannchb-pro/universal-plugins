@@ -34,15 +34,50 @@ import imgCompressor from "@yoannchb/plugin-img-compressor";
 
 ```ts
 import path from "path";
+
 await imgCompressor({
-  buildDir: path.resolve(__dirname, "./dist"),
+  //Required - The dir of your project to scan
+  baseDir: path.resolve(__dirname, "./dist"),
 });
 ```
 
 ### Advanced usage
 
 ```ts
-await imgCompressor({});
+await imgCompressor({
+  //Required - The dir of your project to scan
+  baseDir: path.resolve(__dirname, "./dist"),
+
+  //Optional - The dir to ouput the compressed images
+  outputDir: path.resolve(__dirname, "./output"),
+
+  //Optional - What you want to compress
+  include: ["./assets/*.{png,svg}"],
+
+  //Optional - Configure the differents image compressor plugins
+  plugins: {
+    //Optional - see https://www.npmjs.com/package/imagemin-gifsicle
+    //DEFAULT:
+    gifsicle: { interlaced: true },
+
+    //Optional - see https://www.npmjs.com/package/imagemin-mozjpeg
+    //DEFAULT:
+    mozjpeg: { quality: 75, progressive: true },
+
+    //Optional - see https://www.npmjs.com/package/imagemin-optipng
+    //DEFAULT:
+    optipng: { optimizationLevel: 5 },
+
+    //Optional - see https://www.npmjs.com/package/imagemin-svgo
+    //DEFAULT
+    svgo: {
+      plugins: [
+        { name: "removeViewBox", active: true },
+        { name: "cleanupIDs", active: false },
+      ],
+    },
+  },
+});
 ```
 
 ## Plugin integration
