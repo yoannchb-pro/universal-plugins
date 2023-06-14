@@ -49,7 +49,7 @@ function createPage(options: Options, route: Options["routes"][number]) {
     <priority>${priority}</priority>
 </url>`;
 
-    log(`${routePath} rendered with sucess`);
+    log(`${routePath} rendered with success`);
 
     return page;
   } catch (err) {

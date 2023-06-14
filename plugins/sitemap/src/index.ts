@@ -20,11 +20,11 @@ const sitemap = (options: Options) => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${options.routes.map((route) => createPage(options, route)).join("")}
 </urlset>`;
-  log("XML generated with sucess");
+  log("XML generated with success");
 
   if (!options.disableMinify) {
     xml = xml.replace(/[\n\t]|\s{2,}/gi, "");
-    log("Minimified with sucess");
+    log("Minimified with success");
   }
 
   saveSiteMap(options, xml);

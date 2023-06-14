@@ -1,16 +1,21 @@
 import type { Plugin } from "vite";
 import Options from "../types/options";
-import prerender from "..";
+import imgCompressor from "..";
 
-const prerenderVitePlugin = (options: Options): Plugin => {
+/**
+ * Image compressor plugin for vitejs
+ * @param options
+ * @returns
+ */
+const imgCompressorVitePlugin = (options: Options): Plugin => {
   return {
-    name: "prerenderVitePlugin",
+    name: "imgCompressorVitePlugin",
     apply: "build",
     enforce: "post",
     async closeBundle() {
-      await prerender(options);
+      await imgCompressor(options);
     },
   };
 };
 
-export default prerenderVitePlugin;
+export default imgCompressorVitePlugin;

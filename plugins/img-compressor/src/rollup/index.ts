@@ -1,13 +1,18 @@
-import prerender from "..";
+import imgCompressor from "..";
 import Options from "../types/options";
 
-function prerenderRollupPlugin(options: Options) {
+/**
+ * Image compressor plugin for rollup
+ * @param options
+ * @returns
+ */
+function imgCompressorRollupPlugin(options: Options) {
   return {
-    name: "prerenderRollupPlugin",
+    name: "imgCompressorRollupPlugin",
     async generateBundle() {
-      await prerender(options);
+      await imgCompressor(options);
     },
   };
 }
 
-export default prerenderRollupPlugin;
+export default imgCompressorRollupPlugin;

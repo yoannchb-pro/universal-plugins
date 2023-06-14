@@ -1,15 +1,15 @@
 import type { Compiler } from "webpack";
-import prerender from "..";
+import imgCompressor from "..";
 import Options from "../types/options";
 
-class PrerenderWebpackPlugin {
+class ImgCompressorWebpackPlugin {
   constructor(private options: Options) {}
 
   apply(compiler: Compiler) {
-    compiler.hooks.run.tap("PrerenderWebpackPlugin", async () => {
-      await prerender(this.options);
+    compiler.hooks.run.tap("ImgCompressorWebpackPlugin", async () => {
+      await imgCompressor(this.options);
     });
   }
 }
 
-export default PrerenderWebpackPlugin;
+export default ImgCompressorWebpackPlugin;

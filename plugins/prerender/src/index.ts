@@ -15,9 +15,9 @@ const prerender = async (options: Options): Promise<void> => {
   log(`Rendering on http://localhost:${port}`);
 
   const server = await createServer(options, port);
-  log("Server created with sucess");
+  log("Server created with success");
   const renderer = await createRenderer(options, port);
-  log("Renderer created with sucess");
+  log("Renderer created with success");
 
   const renderedHTML = await Promise.allSettled(
     options.routes.map(renderer.render)
@@ -30,7 +30,7 @@ const prerender = async (options: Options): Promise<void> => {
     }
 
     savePage(options, result.value.route, result.value.html);
-    log(`${result.value.route} rendered with sucess`);
+    log(`${result.value.route} rendered with success`);
   }
 
   renderer.close();
@@ -38,7 +38,7 @@ const prerender = async (options: Options): Promise<void> => {
   server.close();
   log("Server closed");
 
-  log("Prenrendering sucess");
+  log("Prenrendering success");
 };
 
 export default prerender;
