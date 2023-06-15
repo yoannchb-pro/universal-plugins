@@ -95,7 +95,7 @@ await prerender({
 ### Vite
 
 ```ts
-import prerenderVitePlugin from "@yoannchb/plugin-prerender/vite";
+import prerenderVitePlugin from "@yoannchb/plugin-prerender/dist/vite";
 
 export default {
   plugins: [
@@ -109,7 +109,7 @@ export default {
 ### Webpack
 
 ```ts
-import PrerenderWebpackPlugin from "@yoannchb/plugin-prerender/webpack";
+import PrerenderWebpackPlugin from "@yoannchb/plugin-prerender/dist/webpack";
 
 export default {
   plugins: [
@@ -123,7 +123,7 @@ export default {
 ### Rollup
 
 ```ts
-import prerenderRollupPlugin from "@yoannchb/plugin-prerender/rollup";
+import prerenderRollupPlugin from "@yoannchb/plugin-prerender/dist/rollup";
 
 export default {
   plugins: [

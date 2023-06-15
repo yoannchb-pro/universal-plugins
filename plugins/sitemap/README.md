@@ -92,7 +92,7 @@ sitemap({
 ### Vite
 
 ```ts
-import sitemapVitePlugin from "@yoannchb/plugin-sitemap/vite";
+import sitemapVitePlugin from "@yoannchb/plugin-sitemap/dist/vite";
 
 export default {
   plugins: [
@@ -106,7 +106,7 @@ export default {
 ### Webpack
 
 ```ts
-import SitemapWebpackPlugin from "@yoannchb/plugin-sitemap/webpack";
+import SitemapWebpackPlugin from "@yoannchb/plugin-sitemap/dist/webpack";
 
 export default {
   plugins: [
@@ -120,7 +120,7 @@ export default {
 ### Rollup
 
 ```ts
-import sitemapRollupPlugin from "@yoannchb/plugin-sitemap/rollup";
+import sitemapRollupPlugin from "@yoannchb/plugin-sitemap/dist/rollup";
 
 export default {
   plugins: [

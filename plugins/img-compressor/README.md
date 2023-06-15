@@ -85,7 +85,7 @@ await imgCompressor({
 ### Vite
 
 ```ts
-import imgCompressorVitePlugin from "@yoannchb/plugin-img-compressor/vite";
+import imgCompressorVitePlugin from "@yoannchb/plugin-img-compressor/dist/vite";
 
 export default {
   plugins: [
@@ -99,7 +99,7 @@ export default {
 ### Webpack
 
 ```ts
-import ImgCompressorWebpackPlugin from "@yoannchb/plugin-img-compressor/webpack";
+import ImgCompressorWebpackPlugin from "@yoannchb/plugin-img-compressor/dist/webpack";
 
 export default {
   plugins: [
@@ -113,7 +113,7 @@ export default {
 ### Rollup
 
 ```ts
-import imgCompressorRollupPlugin from "@yoannchb/plugin-img-compressor/rollup";
+import imgCompressorRollupPlugin from "@yoannchb/plugin-img-compressor/dist/rollup";
 
 export default {
   plugins: [
