@@ -1,74 +1,54 @@
-import path from "path";
+import { Compiler } from "webpack";
+import imgCompressor from "./core";
 import Options from "./types/options";
-import { log } from "./utils";
-import gulp from "gulp";
-import imagemin from "gulp-imagemin";
+import type { Plugin } from "vite";
 
 /**
- * Compress image from a specific path
+ * Image compressor plugin for rollup
  * @param options
- * @param dir
  * @returns
  */
-function compress(options: Options, dir: string) {
-  return new Promise<string>((resolve) => {
-    gulp
-      .src(path.join(options.baseDir, dir))
-      .pipe(
-        imagemin([
-          imagemin.gifsicle(options.plugins?.gifsicle ?? { interlaced: true }),
-          imagemin.mozjpeg(
-            options.plugins?.mozjpeg ?? { quality: 75, progressive: true }
-          ),
-          imagemin.optipng(
-            options.plugins?.optipng ?? { optimizationLevel: 5 }
-          ),
-          imagemin.svgo(
-            options.plugins?.svgo ?? {
-              plugins: [
-                { name: "removeViewBox", active: true },
-                { name: "cleanupIDs", active: false },
-              ],
-            }
-          ),
-        ])
-      )
-      .pipe(
-        gulp.dest(path.join(options.outputDir ?? options.baseDir, dir), {
-          overwrite: true,
-        })
-      )
-      .on("end", () => resolve(dir));
-  });
+function imgCompressorRollupPlugin(options: Options) {
+  return {
+    name: "imgCompressorRollupPlugin",
+    async generateBundle() {
+      await imgCompressor(options);
+    },
+  };
 }
 
 /**
- * Image compressor main function
- * @param options
+ * Image compressor webpack plugin
  */
-const imgCompressor = async (options: Options): Promise<void> => {
-  log("Starting image compression");
+class ImgCompressorWebpackPlugin {
+  constructor(private options: Options) {}
 
-  options.include ??= ["*"];
-  options.outputDir ??= options.baseDir;
-
-  let promises: Promise<string>[] = [];
-  for (const dir of options.include) {
-    promises.push(compress(options, dir));
+  apply(compiler: Compiler) {
+    compiler.hooks.run.tap("ImgCompressorWebpackPlugin", async () => {
+      await imgCompressor(this.options);
+    });
   }
+}
 
-  const allPromisesDone = await Promise.allSettled(promises);
-
-  for (const promiseDone of allPromisesDone) {
-    if (promiseDone.status === "rejected") {
-      log(promiseDone.reason, true);
-      continue;
-    }
-
-    log(`${promiseDone.value} compressed with sucess`);
-  }
-
-  log("Image compression success");
+/**
+ * Image compressor plugin for vitejs
+ * @param options
+ * @returns
+ */
+const imgCompressorVitePlugin = (options: Options): Plugin => {
+  return {
+    name: "imgCompressorVitePlugin",
+    apply: "build",
+    enforce: "post",
+    async closeBundle() {
+      await imgCompressor(options);
+    },
+  };
 };
 
-export default imgCompressor;
+export {
+  imgCompressor,
+  imgCompressorRollupPlugin,
+  ImgCompressorWebpackPlugin,
+  imgCompressorVitePlugin,
+};

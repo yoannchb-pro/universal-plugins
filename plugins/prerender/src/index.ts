@@ -1,44 +1,53 @@
-import getPort from "get-port";
+import { Compiler } from "webpack";
+import prerender from "./core";
 import Options from "./types/options";
-import createServer from "./core/server";
-import createRenderer from "./core/renderer";
-import savePage from "./core/save";
-import { log } from "./utils";
+import type { Plugin } from "vite";
 
 /**
- * Prerender main function
+ * Rollup plugin to prerender a website
  * @param options
+ * @returns
  */
-const prerender = async (options: Options): Promise<void> => {
-  log("Starting prerendering");
-  const port = await getPort();
-  log(`Rendering on http://localhost:${port}`);
+function prerenderRollupPlugin(options: Options) {
+  return {
+    name: "prerenderRollupPlugin",
+    async generateBundle() {
+      await prerender(options);
+    },
+  };
+}
 
-  const server = await createServer(options, port);
-  log("Server created with success");
-  const renderer = await createRenderer(options, port);
-  log("Renderer created with success");
-
-  const renderedHTML = await Promise.allSettled(
-    options.routes.map(renderer.render)
-  );
-
-  for (const result of renderedHTML) {
-    if (result.status === "rejected") {
-      log(result.reason, true);
-      continue;
-    }
-
-    savePage(options, result.value.route, result.value.html);
-    log(`${result.value.route} rendered with success`);
-  }
-
-  renderer.close();
-  log("Renderer closed");
-  server.close();
-  log("Server closed");
-
-  log("Prenrendering success");
+/**
+ * Vite plugin to prerender a website
+ * @param options
+ * @returns
+ */
+const prerenderVitePlugin = (options: Options): Plugin => {
+  return {
+    name: "prerenderVitePlugin",
+    apply: "build",
+    enforce: "post",
+    async closeBundle() {
+      await prerender(options);
+    },
+  };
 };
 
-export default prerender;
+class PrerenderWebpackPlugin {
+  constructor(private options: Options) {}
+
+  apply(compiler: Compiler) {
+    compiler.hooks.run.tap("PrerenderWebpackPlugin", async () => {
+      await prerender(this.options);
+    });
+  }
+}
+
+export default PrerenderWebpackPlugin;
+
+export {
+  prerender,
+  prerenderRollupPlugin,
+  prerenderVitePlugin,
+  PrerenderWebpackPlugin,
+};
