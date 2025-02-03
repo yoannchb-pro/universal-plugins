@@ -9,7 +9,7 @@ const node = {
   output: [
     {
       file: pkg.main,
-      format: "umd",
+      format: "cjs",
       name: "prerender",
       sourcemap: true,
     },
